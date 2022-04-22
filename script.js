@@ -47,3 +47,11 @@ message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
 message.style.height =
     Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+// Smooth scroll
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function () {
+    section1.scrollIntoView({ behavior: 'smooth' });
+});
