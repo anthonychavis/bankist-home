@@ -57,7 +57,7 @@ btnScrollTo.addEventListener('click', function () {
 });
 
 // Page navigation - event delegation
-document.querySelectorAll('.nav__link').addEventListener('click', function (e) {
+document.querySelector('.nav__links').addEventListener('click', function (e) {
     e.preventDefault();
 
     // Matching strategy
