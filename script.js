@@ -15,6 +15,8 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
+const nav = document.querySelector('.nav');
+
 // Modal window
 const openModal = function (e) {
     e.preventDefault();
@@ -92,8 +94,6 @@ tabsContainer.addEventListener('click', function (e) {
 });
 
 // Menu fade animation
-const nav = document.querySelector('.nav');
-
 const handleHover = function (e) {
     if (e.target.classList.contains('nav__link')) {
         const link = e.target;
@@ -109,3 +109,20 @@ const handleHover = function (e) {
 
 nav.addEventListener('mouseover', handleHover.bind(0.5)); // mouseover instead of mousenter for bubble (delegation). bind() method to manually set the this keyword
 nav.addEventListener('mouseout', handleHover.bind(1)); // mouseout = opposite of mouseover
+
+// Sticky Nav: Intersection Observer API
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+    const [entry] = entries; // threshold
+
+    if (!entry.isIntersecting) nav.classList.add('sticky');
+    else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
