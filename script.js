@@ -17,6 +17,8 @@ const tabsContent = document.querySelectorAll('.operations__content');
 
 const nav = document.querySelector('.nav');
 
+const navHeight = nav.getBoundingClientRect().height;
+
 // Modal window
 const openModal = function (e) {
     e.preventDefault();
@@ -111,8 +113,6 @@ nav.addEventListener('mouseover', handleHover.bind(0.5)); // mouseover instead o
 nav.addEventListener('mouseout', handleHover.bind(1)); // mouseout = opposite of mouseover
 
 // Sticky Nav: Intersection Observer API
-const navHeight = nav.getBoundingClientRect().height;
-
 const stickyNav = function (entries) {
     const [entry] = entries; // threshold
 
@@ -126,3 +126,27 @@ const headerObserver = new IntersectionObserver(stickyNav, {
     rootMargin: `-${navHeight}px`,
 });
 headerObserver.observe(header);
+
+// Reveal sections
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+    const [entry] = entries;
+    console.log(entry);
+
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.remove('section--hidden');
+    observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+    root: null,
+    threshold: 0.15,
+});
+
+// observe each section w/same Observer, +programmatically add the hidden class
+allSections.forEach(function (section) {
+    sectionObserver.observe(section);
+    section.classList.add('section--hidden');
+});
