@@ -35,7 +35,7 @@ body {
 .section {
     padding: 15rem 3rem;
     border-top: 1px solid #ddd;
-
+    /* NOTICE how this transition works w/ .section--hidden below & in the JS file under reveal section */
     transition: transform 1s, opacity 1s;
 }
 
@@ -360,7 +360,7 @@ h4 {
 .operations__icon--3 {
     background-color: var(--color-tertiary-opacity);
 }
-.operations__icon--1 svg {
+/* .operations__icon--1 svg {
     fill: var(--color-secondary-darker);
 }
 .operations__icon--2 svg {
@@ -368,7 +368,7 @@ h4 {
 }
 .operations__icon--3 svg {
     fill: var(--color-tertiary);
-}
+} */
 
 /* SLIDER */
 .slider {
