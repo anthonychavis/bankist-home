@@ -132,7 +132,7 @@ const allSections = document.querySelectorAll('.section');
 
 const revealSection = function (entries, observer) {
     const [entry] = entries;
-    console.log(entry);
+    // console.log(entry);
 
     if (!entry.isIntersecting) return;
 
@@ -153,11 +153,11 @@ allSections.forEach(function (section) {
 
 // Lazy loading images
 const imgTargets = document.querySelectorAll('img[data-src]');
-console.log(imgTargets);
+// console.log(imgTargets);
 
 const loadImg = function (entries, observer) {
     const [entry] = entries;
-    console.log(entry);
+    // console.log(entry);
 
     if (!entry.isIntersecting) return;
 
