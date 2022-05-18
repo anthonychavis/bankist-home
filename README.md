@@ -13,6 +13,7 @@ Sample landing page for a financial institution
 ## Introduction
 
 The goal of this project was to build a landing/home page with various components and visual effects that require advanced DOM manipulation techniques. The project was completed without using a third-party library.
+
 The site is currently not responsive.
 
 ## Technologies
